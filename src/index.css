@@ -271,3 +271,62 @@ body {
     opacity: 0.8;
   }
 }
+
+
+
+/* Admin css  */
+
+/* NAV BUTTON */
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.25s ease;
+}
+.nav-btn:hover {
+  color: #facc15;
+}
+
+/* DROPDOWN CONTAINER */
+.dropdown-box {
+  position: absolute;
+  right: 0;
+  margin-top: 12px;
+  width: 230px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 14px;
+  padding: 8px 0;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+  animation: fadeSlide 0.25s ease-out;
+}
+
+/* EACH ROW */
+.dropdown-row {
+  padding: 12px 20px;
+  color: #ffeeba;
+  font-size: 14px;
+  display: block;
+  transition: 0.25s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-row:hover {
+  background: rgba(255, 215, 0, 0.15);
+  border-left-color: #facc15;
+  padding-left: 26px;
+  color: white;
+}
+
+/* ANIMATION */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

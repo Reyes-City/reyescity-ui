@@ -11,204 +11,142 @@ import {
 } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
 
+
+
 export const AdminNavbar = () => {
-  const navRef = useRef<HTMLDivElement>(null);
+ const navRef = useRef<HTMLElement | null>(null);
+const dropdownRef = useRef<HTMLDivElement | null>(null);
+const [openMenu, setOpenMenu] = useState<string | null>(null);
 
-  // Dropdown states
-  const [showStaffMenu, setShowStaffMenu] = useState(false);
-  const [showAnnounceMenu, setShowAnnounceMenu] = useState(false);
-  const [showBannerMenu, setShowBannerMenu] = useState(false);
-  const [showServerMenu, setShowServerMenu] = useState(false);
+useEffect(() => {
+  if (!navRef.current) return;
 
-  const [showNotifMenu, setShowNotifMenu] = useState(false);
-  const [showProfileMenu, setShowProfileMenu] = useState(false);
+}, []);
 
-  // Run animation once
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(navRef.current, {
-        y: -80,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power3.out",
-      });
-    });
 
-    return () => ctx.revert();
-  }, []);
+  const animateDropdown = () => {
+    if (dropdownRef.current) {
+      gsap.fromTo(
+        dropdownRef.current,
+        { y: -12, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" }
+      );
+    }
+  };
+
+  const toggleMenu = (menu: string) => {
+    setOpenMenu(openMenu === menu ? null : menu);
+    setTimeout(animateDropdown, 10);
+  };
 
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-xl 
-      border-b border-yellow-600/50 shadow-[0_0_20px_rgba(255,215,0,0.4)]"
+      className="
+        fixed top-0 left-0 w-full z-[9999] 
+        bg-black/80 backdrop-blur-xl 
+        border-b border-yellow-600/40 
+        shadow-[0_0_20px_rgba(255,210,0,0.3)]
+      "
     >
-      <nav className="flex items-center justify-between px-8 py-4">
+      <nav className="flex items-center justify-between px-10 py-4">
 
-        {/* LEFT SIDE */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-5">
           <img
             src="/img/logo_reyes_city.png"
             className="w-12 drop-shadow-[0_0_15px_#FFD700]"
           />
-
-          <h1 className="text-yellow-400 tracking-widest text-lg font-bold">
+          <h1 className="text-yellow-400 text-lg font-bold tracking-widest">
             ADMIN PANEL
           </h1>
-
-          {/* MAIN LINKS */}
-          <div className="hidden md:flex items-center gap-6 text-yellow-300">
-
-            {/* DASHBOARD */}
-            <Link to="/admin/dashboard" className="hover:text-yellow-400">
-              Dashboard
-            </Link>
-
-            {/* STAFF DROPDOWN */}
-            <div className="relative">
-              <button
-                onClick={() => setShowStaffMenu(!showStaffMenu)}
-                className="flex items-center gap-2 hover:text-yellow-400"
-              >
-                <FaUsersCog /> Staff <IoChevronDown />
-              </button>
-
-              {showStaffMenu && (
-                <div className="absolute left-0 mt-2 w-52 bg-black border border-yellow-700/40 rounded-lg shadow-lg p-2 text-sm">
-                  <Link className="dropdown-item" to="/admin/staff/admins">
-                    Admins
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/staff/moderators">
-                    Moderators
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/staff/helpers">
-                    Helpers
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/staff/add">
-                    ➕ Add Staff
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* ANNOUNCEMENTS DROPDOWN */}
-            <div className="relative">
-              <button
-                onClick={() => setShowAnnounceMenu(!showAnnounceMenu)}
-                className="flex items-center gap-2 hover:text-yellow-400"
-              >
-                <FaBullhorn /> Announcements <IoChevronDown />
-              </button>
-
-              {showAnnounceMenu && (
-                <div className="absolute left-0 mt-2 w-60 bg-black border border-yellow-700/40 rounded-lg shadow-lg p-2 text-sm">
-                  <Link className="dropdown-item" to="/admin/announcements/create">
-                    Create Announcement
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/announcements/manage">
-                    Manage Announcements
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/announcements/popup">
-                    Popup Alerts
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/announcements/broadcast">
-                    Broadcast Message
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* BANNERS DROPDOWN */}
-            <div className="relative">
-              <button
-                onClick={() => setShowBannerMenu(!showBannerMenu)}
-                className="flex items-center gap-2 hover:text-yellow-400"
-              >
-                <FaImage /> Banners <IoChevronDown />
-              </button>
-
-              {showBannerMenu && (
-                <div className="absolute left-0 mt-2 w-52 bg-black border border-yellow-700/40 rounded-lg shadow-lg p-2 text-sm">
-                  <Link className="dropdown-item" to="/admin/banner/home">
-                    Homepage Banner
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/banner/events">
-                    Event Banners
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/banner/server">
-                    Server Banner
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* SERVER STATUS DROPDOWN */}
-            <div className="relative">
-              <button
-                onClick={() => setShowServerMenu(!showServerMenu)}
-                className="flex items-center gap-2 hover:text-yellow-400"
-              >
-                <FaServer /> Server Status <IoChevronDown />
-              </button>
-
-              {showServerMenu && (
-                <div className="absolute left-0 mt-2 w-52 bg-black border border-yellow-700/40 rounded-lg shadow-lg p-2 text-sm">
-                  <Link className="dropdown-item" to="/admin/server/players">
-                    Live Players
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/server/resources">
-                    Resources
-                  </Link>
-                  <Link className="dropdown-item" to="/admin/server/logs">
-                    Logs
-                  </Link>
-                </div>
-              )}
-            </div>
-          </div>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className="flex items-center gap-6 text-yellow-300">
+        <div className="flex items-center gap-8 text-yellow-300 font-medium">
 
-          {/* NOTIFICATIONS */}
           <div className="relative">
-            <button
-              onClick={() => setShowNotifMenu(!showNotifMenu)}
-              className="relative hover:text-yellow-400"
-            >
-              <FaBell size={20} />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+            <button onClick={() => toggleMenu("staff")} className="nav-btn">
+              <FaUsersCog /> Staff <IoChevronDown />
             </button>
 
-            {showNotifMenu && (
-              <div className="absolute right-0 mt-3 w-64 bg-black border border-yellow-700/40 rounded-lg shadow-lg p-3 text-sm">
-                <p>No new notifications.</p>
+            {openMenu === "staff" && (
+              <div ref={dropdownRef} className="dropdown-box">
+                <Link className="dropdown-row" to="/admin/staff/admins">Admins</Link>
+                <Link className="dropdown-row" to="/admin/staff/moderators">Moderators</Link>
+                <Link className="dropdown-row" to="/admin/staff/helpers">Helpers</Link>
+                <Link className="dropdown-row" to="/admin/staff/add">➕ Add Staff</Link>
               </div>
             )}
           </div>
 
-          {/* PROFILE MENU */}
           <div className="relative">
-            <button
-              onClick={() => setShowProfileMenu(!showProfileMenu)}
-              className="flex items-center gap-2 hover:text-yellow-400"
-            >
-              <FaUserShield size={20} />
-              <IoChevronDown />
+            <button onClick={() => toggleMenu("announce")} className="nav-btn">
+              <FaBullhorn /> Announce <IoChevronDown />
             </button>
 
-            {showProfileMenu && (
-              <div className="absolute right-0 mt-3 w-56 bg-black border border-yellow-700/40 rounded-lg shadow-lg p-3 text-sm">
-                <Link className="dropdown-item" to="/admin/profile">
-                  My Profile
-                </Link>
-                <Link className="dropdown-item" to="/admin/settings">
-                  Settings
-                </Link>
-                <Link className="dropdown-item text-red-400" to="/logout">
-                  Logout
-                </Link>
+            {openMenu === "announce" && (
+              <div ref={dropdownRef} className="dropdown-box">
+                <Link className="dropdown-row" to="/admin/announcements/create">Create</Link>
+                <Link className="dropdown-row" to="/admin/announcements/manage">Manage</Link>
+                <Link className="dropdown-row" to="/admin/announcements/popup">Popup Alerts</Link>
+                <Link className="dropdown-row" to="/admin/announcements/broadcast">Broadcast</Link>
+              </div>
+            )}
+          </div>
+
+          <div className="relative">
+            <button onClick={() => toggleMenu("banners")} className="nav-btn">
+              <FaImage /> Banners <IoChevronDown />
+            </button>
+
+            {openMenu === "banners" && (
+              <div ref={dropdownRef} className="dropdown-box">
+                <Link className="dropdown-row" to="/admin/banner/home">Homepage Banner</Link>
+                <Link className="dropdown-row" to="/admin/banner/events">Event Banners</Link>
+                <Link className="dropdown-row" to="/admin/banner/server">Server Banner</Link>
+              </div>
+            )}
+          </div>
+
+          <div className="relative">
+            <button onClick={() => toggleMenu("server")} className="nav-btn">
+              <FaServer /> Server <IoChevronDown />
+            </button>
+
+            {openMenu === "server" && (
+              <div ref={dropdownRef} className="dropdown-box">
+                <Link className="dropdown-row" to="/admin/server/players">Live Players</Link>
+                <Link className="dropdown-row" to="/admin/server/resources">Resources</Link>
+                <Link className="dropdown-row" to="/admin/server/logs">Logs</Link>
+              </div>
+            )}
+          </div>
+
+          <div className="relative">
+            <button
+              onClick={() => toggleMenu("notif")}
+              className="relative hover:text-yellow-400 transition"
+            >
+              <FaBell size={19} />
+              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+            </button>
+
+            {openMenu === "notif" && (
+              <div ref={dropdownRef} className="dropdown-box w-64">
+                <p className="text-yellow-200 opacity-70">No new notifications.</p>
+              </div>
+            )}
+          </div>
+
+          <div className="relative">
+            <button onClick={() => toggleMenu("profile")} className="nav-btn">
+              <FaUserShield size={20} /> <IoChevronDown />
+            </button>
+
+            {openMenu === "profile" && (
+              <div ref={dropdownRef} className="dropdown-box w-56">
+                <Link className="dropdown-row" to="/admin/profile">My Profile</Link>
+                <Link className="dropdown-row" to="/admin/settings">Settings</Link>
+                <Link className="dropdown-row text-red-400" to="/logout">Logout</Link>
               </div>
             )}
           </div>
@@ -218,4 +156,3 @@ export const AdminNavbar = () => {
     </header>
   );
 };
-
