@@ -1,14 +1,11 @@
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { FaGithub } from "react-icons/fa";
-// import { TiLocationArrow } from "react-icons/ti";
-import { FaDiscord } from "react-icons/fa";
-
+import { FaGithub, FaDiscord } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { useWindowScroll } from "react-use";
 
 import { LINKS, NAV_ITEMS } from "@/constants";
 import { cn } from "@/lib/utils";
-
 import { Button } from "./button";
 
 export const Navbar = () => {
@@ -23,12 +20,12 @@ export const Navbar = () => {
   const { y: currentScrollY } = useWindowScroll();
 
   const toggleAudioIndicator = () => {
-    setIsAudioPlaying((prevAudioPlaying) => !prevAudioPlaying);
-    setIsIndicatorActive((prevIndicatorActive) => !prevIndicatorActive);
+    setIsAudioPlaying((prev) => !prev);
+    setIsIndicatorActive((prev) => !prev);
   };
 
   useEffect(() => {
-    if (isAudioPlaying) void audioElementRef.current?.play();
+    if (isAudioPlaying) audioElementRef.current?.play();
     else audioElementRef.current?.pause();
   }, [isAudioPlaying]);
 
@@ -67,13 +64,16 @@ export const Navbar = () => {
               <img src="/img/logo_reyes_city.png" alt="Logo" className="w-10" />
             </a>
 
-            <Button
-              id="product-button"
-              rightIcon={FaDiscord}
-              containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            >
-              Join Now
-            </Button>
+            {/* 🔥 Updated: Join Now navigates to /admin */}
+            <Link to="/admin">
+              <Button
+                id="product-button"
+                rightIcon={FaDiscord}
+                containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
+              >
+                Join Now
+              </Button>
+            </Link>
           </div>
 
           <div className="flex h-full items-center">
@@ -99,19 +99,17 @@ export const Navbar = () => {
                 />
 
                 {Array(4)
-                  .fill("")
-                  .map((_, i) => {
-                    return (
-                      <div
-                        key={i + 1}
-                        className={cn(
-                          "indicator-line",
-                          isIndicatorActive && "active"
-                        )}
-                        style={{ animationDelay: `${(i + 1) * 0.1}s` }}
-                      />
-                    );
-                  })}
+                  .fill(0)
+                  .map((_, i) => (
+                    <div
+                      key={i}
+                      className={cn(
+                        "indicator-line",
+                        isIndicatorActive && "active"
+                      )}
+                      style={{ animationDelay: `${(i + 1) * 0.1}s` }}
+                    />
+                  ))}
               </button>
 
               <a
