@@ -1,24 +1,44 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// Public Pages
 import { Home } from "@/pages/Home";
-import { Admin } from "@/pages/Admin";
 import { NotFound } from "@/pages/NotFound";
 import { AdminLogin } from "@/pages/AdminLogin";
+
+// Admin Main Page
+import { Admin } from "@/pages/Admin";
+
+// Premium Pages
+import CreatePremiumPage from "@/pages/premium/Create";
+import ManagePremiumPage from "@/pages/premium/Manage";
+import PremiumTagPage from "@/pages/premium/Tags";
+
+// Layout
+import AdminLayout from "@/layouts/AdminLayout";
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Default Route → Home */}
-        <Route path="/" element={<Home />} />
 
-        {/* SHOW LOGIN ON /admin */}
+        {/* PUBLIC ROUTES */}
+        <Route path="/" element={<Home />} />
         <Route path="/admin" element={<AdminLogin />} />
 
-        {/* Actual dashboard */}
-        <Route path="/admin/dashboard" element={<Admin />} />
+        {/* ADMIN LAYOUT WRAPPER - Navbar will always show inside these */}
+        <Route path="/admin" element={<AdminLayout />}>
 
-        {/* 404 Fallback */}
+          {/* Dashboard */}
+          <Route path="dashboard" element={<Admin />} />
+
+          {/* PREMIUM MODULE */}
+          <Route path="premium/create" element={<CreatePremiumPage />} />
+          <Route path="premium/manage" element={<ManagePremiumPage />} />
+          <Route path="premium/tags" element={<PremiumTagPage />} />
+
+        </Route>
+
+        {/* 404 PAGE */}
         <Route path="*" element={<NotFound />} />
 
       </Routes>

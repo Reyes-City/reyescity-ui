@@ -92,6 +92,20 @@ useEffect(() => {
               </div>
             )}
           </div>
+          
+          <div className="relative">
+  <button onClick={() => toggleMenu("premium")} className="nav-btn">
+    💎 Premium <IoChevronDown />
+  </button>
+
+  {openMenu === "premium" && (
+    <div ref={dropdownRef} className="dropdown-box">
+      <Link className="dropdown-row" to="/admin/premium/create">Create Plan</Link>
+      <Link className="dropdown-row" to="/admin/premium/manage">Manage Plans</Link>
+      <Link className="dropdown-row" to="/admin/premium/tags">Tags & Filters</Link>
+    </div>
+  )}
+</div>
 
           <div className="relative">
             <button onClick={() => toggleMenu("banners")} className="nav-btn">
