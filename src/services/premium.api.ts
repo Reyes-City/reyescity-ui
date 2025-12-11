@@ -1,4 +1,5 @@
 import axios from "axios";
+import { PremiumGroup } from "../constants/types";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL + "/premium",
@@ -29,3 +30,9 @@ export const updatePremium = (
   }
 ) => api.put(`/${id}`, data);
 export const deletePremium = (id: string) => api.delete(`/${id}`);
+
+export const getPremiumPlans = async () => {
+  const res = await axios.get<PremiumGroup[]>(import.meta.env.VITE_BASE_URL + "/premium/grouped/all");
+  return res.data;
+};
+

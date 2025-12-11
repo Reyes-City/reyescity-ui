@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
 import { Story } from "@/components/story";
+import PremiumPlans from "./PremiumPlans/PremiumPlans";
 
 export const Home = () => {
   return (
@@ -14,6 +15,7 @@ export const Home = () => {
       <main>
         <Hero />
         <About />
+        <PremiumPlans />
         <Features />
         <Story />
         <Contact />
