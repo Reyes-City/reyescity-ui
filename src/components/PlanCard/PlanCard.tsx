@@ -1,7 +1,7 @@
-import React from "react";
+
 import "./PlanCard.css";
 
-const PlanCard = ({ plan }) => {
+const PlanCard = ({ plan }: any) => {
   return (
     <div className="card-wrapper">
 

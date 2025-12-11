@@ -1,4 +1,6 @@
-export const PremiumTable = ({ data, onEdit, onDelete }) => {
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
+
+export const PremiumTable = ({ data, onEdit, onDelete }:any) => {
   return (
     <table className="w-full border border-yellow-600/40 text-left">
       <thead className="bg-yellow-600/20">
@@ -12,7 +14,7 @@ export const PremiumTable = ({ data, onEdit, onDelete }) => {
       </thead>
 
       <tbody>
-        {data.map((p) => (
+        {data.map((p: { _id: Key | null | undefined; premiumTitle: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; tag: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; rate: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; validity: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }) => (
           <tr key={p._id} className="border-b border-yellow-600/20">
             <td className="p-3">{p.premiumTitle}</td>
             <td className="p-3">{p.tag}</td>

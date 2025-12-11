@@ -1,4 +1,4 @@
-export const Input = ({ label, ...props }) => {
+export const Input = ({ label, ...props }:any) => {
   return (
     <div className="mb-3">
       {label && <label className="text-yellow-300 text-sm">{label}</label>}

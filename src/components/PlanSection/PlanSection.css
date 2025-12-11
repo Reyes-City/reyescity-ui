@@ -4,6 +4,7 @@
   width: 100%;
 }
 
+/* HEADER */
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -23,22 +24,16 @@
   opacity: 0.7;
 }
 
-/* HORIZONTAL ROW */
+/* --- CARD SCROLL ROW --- */
 .plan-row-scroll {
   display: flex;
-  gap: 25px;
+  gap: 30px;
   overflow-x: auto;
-  overflow-y: hidden;
-  padding: 20px 0;
   scroll-behavior: smooth;
+  padding: 20px 40px;
   white-space: nowrap;
 }
 
-.plan-row-scroll > * {
-  flex: 0 0 360px;   /* fixed card width */
-}
-
-/* Hide scrollbar */
 .plan-row-scroll::-webkit-scrollbar {
   display: none;
 }
@@ -46,45 +41,50 @@
   scrollbar-width: none;
 }
 
-/* FADE RIGHT */
-.plan-section::after {
-  content: "";
-  position: absolute;
-  top: 100px;
-  right: 0;
-  width: 60px;
-  height: 70%;
-  pointer-events: none;
-  background: linear-gradient(to right, transparent, rgba(0,0,0,0.85));
+/* DESKTOP → 3 cards */
+.plan-row-scroll > * {
+  flex: 0 0 calc((100% - 90px) / 3); /* 3-card layout */
 }
 
-/* ARROW BUTTONS */
+/* TABLET → 2 cards */
+@media (max-width: 1024px) {
+  .plan-row-scroll > * {
+    flex: 0 0 calc((100% - 30px) / 2);
+  }
+}
+
+/* MOBILE → 1 card */
+@media (max-width: 600px) {
+  .plan-row-scroll > * {
+    flex: 0 0 90%;
+  }
+}
+
+/* --- ARROWS --- */
 .arrow-btn {
   position: absolute;
-  top: 45%;
+  top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 20;
 
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: white;
-  font-size: 24px;
-  padding: 10px 14px;
-  border-radius: 10px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 26px;
   cursor: pointer;
+  border: none;
   backdrop-filter: blur(4px);
-  
   transition: 0.2s ease;
+}
+
+.arrow-btn.left {
+  left: -50px;  /* spaced out */
+}
+
+.arrow-btn.right {
+  right: -50px; /* spaced out */
 }
 
 .arrow-btn:hover {
   background: rgba(255,255,255,0.25);
-}
-
-.arrow-btn.left {
-  left: 0;
-}
-
-.arrow-btn.right {
-  right: 0;
 }

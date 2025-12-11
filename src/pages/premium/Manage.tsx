@@ -18,8 +18,8 @@ export default function ManagePremiumPage() {
       <h1 className="text-3xl mb-4 font-bold">Manage Premium Plans</h1>
       <PremiumTable
         data={list}
-        onEdit={(p) => console.log("edit", p)}
-        onDelete={async (id) => {
+        onEdit={(p: any) => console.log("edit", p)}
+        onDelete={async (id: string) => {
           await deletePremium(id);
           load();
         }}
