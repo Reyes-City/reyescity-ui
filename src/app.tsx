@@ -5,17 +5,22 @@ import { Home } from "@/pages/Home";
 import { NotFound } from "@/pages/NotFound";
 import { AdminLogin } from "@/pages/AdminLogin";
 
-// Admin Main Page
+// Admin Dashboard
 import { Admin } from "@/pages/Admin";
 
 // Premium Pages
 import CreatePremiumPage from "@/pages/premium/Create";
 import ManagePremiumPage from "@/pages/premium/Manage";
 import PremiumTagPage from "@/pages/premium/Tags";
-import PremiumPlans from "./pages/PremiumPlans/PremiumPlans";
+import PremiumPlans from "@/pages/PremiumPlans/PremiumPlans";
+
+// Rules Pages ✅
+import CreateRule from "@/pages/rules/CreateRule";
+import ManageRules from "@/pages/rules/ManageRules";
 
 // Layout
 import AdminLayout from "@/layouts/AdminLayout";
+import RulesPage from "@/pages/rules/Rules";
 
 function App() {
   return (
@@ -23,9 +28,11 @@ function App() {
       <Routes>
         {/* PUBLIC ROUTES */}
         <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/rules" element={<RulesPage />} />
 
-        {/* ADMIN LAYOUT WRAPPER - Navbar will always show inside these */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+
+        {/* ADMIN ROUTES (WITH LAYOUT) */}
         <Route path="/admin" element={<AdminLayout />}>
           {/* Dashboard */}
           <Route path="dashboard" element={<Admin />} />
@@ -35,10 +42,15 @@ function App() {
           <Route path="premium/manage" element={<ManagePremiumPage />} />
           <Route path="premium/tags" element={<PremiumTagPage />} />
 
-          
+          {/* RULES MODULE ✅ */}
+          <Route path="rules/create" element={<CreateRule />} />
+          <Route path="rules/manage" element={<ManageRules />} />
         </Route>
-<Route path="/premium-plans" element={<PremiumPlans />} />
-        {/* 404 PAGE */}
+
+        {/* PUBLIC PREMIUM PLANS */}
+        <Route path="/premium-plans" element={<PremiumPlans />} />
+
+        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

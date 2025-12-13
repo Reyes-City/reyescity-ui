@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar";
 import { Story } from "@/components/story";
 import PremiumPlans from "./PremiumPlans/PremiumPlans";
 
+
 export const Home = () => {
   return (
     <div className="relative min-h-screen w-screen overflow-x-hidden">
