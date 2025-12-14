@@ -3,10 +3,10 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export const NAV_ITEMS = [
   { label: "Rules", href: "/rules" },
-  { label: "About", href: "#about" },
-  { label: "Nexus", href: "#nexus" },
-  { label: "Story", href: "#story" },
-  { label: "Contact", href: "#contact" },
+  { label: "Premium Plans", href: "/premium-plans" },
+  // { label: "Nexus", href: "#nexus" },
+  // { label: "Story", href: "#story" },
+  // { label: "Contact", href: "#contact" },
 ] as const;
 
 export const LINKS = {

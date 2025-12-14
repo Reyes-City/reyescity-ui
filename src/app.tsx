@@ -12,7 +12,7 @@ import { Admin } from "@/pages/Admin";
 import CreatePremiumPage from "@/pages/premium/Create";
 import ManagePremiumPage from "@/pages/premium/Manage";
 import PremiumTagPage from "@/pages/premium/Tags";
-import PremiumPlans from "@/pages/PremiumPlans/PremiumPlans";
+
 
 // Rules Pages ✅
 import CreateRule from "@/pages/rules/CreateRule";
@@ -21,6 +21,7 @@ import ManageRules from "@/pages/rules/ManageRules";
 // Layout
 import AdminLayout from "@/layouts/AdminLayout";
 import RulesPage from "@/pages/rules/Rules";
+import Premium from "./pages/PremiumPlans/Premium";
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
         </Route>
 
         {/* PUBLIC PREMIUM PLANS */}
-        <Route path="/premium-plans" element={<PremiumPlans />} />
+        <Route path="/premium-plans" element={<Premium />} />
 
         {/* 404 */}
         <Route path="*" element={<NotFound />} />

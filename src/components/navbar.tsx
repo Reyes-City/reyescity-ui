@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaDiscord } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useWindowScroll } from "react-use";
-
 import { LINKS, NAV_ITEMS } from "@/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
@@ -60,7 +59,7 @@ export const Navbar = () => {
       <div className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
           <div className="flex items-center gap-7">
-            <a href="#hero" className="transition hover:opacity-75">
+            <a href="/" className="transition hover:opacity-75">
               <img src="/img/logo_reyes_city.png" alt="Logo" className="w-10" />
             </a>
 
@@ -79,9 +78,9 @@ export const Navbar = () => {
           <div className="flex h-full items-center">
             <div className="hidden md:block">
               {NAV_ITEMS.map(({ label, href }) => (
-                <a key={href} href={href} className="nav-hover-btn">
+                <Link key={href} to={href} className="nav-hover-btn">
                   {label}
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -112,7 +111,7 @@ export const Navbar = () => {
                   ))}
               </button>
 
-              <a
+              {/* <a
                 href={LINKS.sourceCode}
                 target="_blank"
                 rel="noreferrer noopener"
@@ -120,7 +119,7 @@ export const Navbar = () => {
                 title="Source Code"
               >
                 <FaGithub className="size-5 text-white" />
-              </a>
+              </a> */}
             </div>
           </div>
         </nav>

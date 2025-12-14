@@ -16,7 +16,8 @@ export const Home = () => {
       <main>
         <Hero />
         <About />
-        <PremiumPlans />
+       <PremiumPlans color="black" />
+
         <Features />
         <Story />
         <Contact />

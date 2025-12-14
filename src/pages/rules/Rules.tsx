@@ -4,6 +4,7 @@ import { RuleService } from "@/services/rule.service";
 // import RulesList from "@/components/rules/RulesList";
 import { Navbar } from "@/components/navbar";
 import RulesTimeline from "@/components/rules/RulesTimeline";
+import { AnimatedTitle } from "@/components/animated-title";
 
 export default function RulesPage() {
   const { category } = useParams<{ category?: string }>();
@@ -43,50 +44,44 @@ export default function RulesPage() {
       .finally(() => setLoading(false));
   }, [activeCategory]);
 
- return (
-  <div className="min-h-screen bg-black">
-    <Navbar />
+  return (
+    <div className="min-h-screen bg-black">
+      <Navbar />
 
-    {/* CONTENT WRAPPER */}
-    <div className="max-w-5xl mx-auto px-4 py-14">
+      {/* CONTENT WRAPPER */}
+      <div className="mx-auto max-w-5xl px-4 py-14">
       
-      {/* Header */}
-      <div className="mb-10 text-center">
-        <h1 className="text-3xl font-bold text-white">
-          Server Rules
-        </h1>
-        <p className="text-white/60 mt-2">
-          Select a category to view rules
-        </p>
-      </div>
+        <div className="mb-10 text-center">
+           {/* Header */} <AnimatedTitle containerClass="mt-5 !text-white text-center">
+            {"<b>Server Rules</b>"}
+          </AnimatedTitle>
+          <p className="mt-2 text-white/60">Select a category to view rules</p>
+        </div>
 
-      {/* Category Selector */}
-      <div className="flex flex-wrap gap-3 justify-center mb-10">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-2 rounded-lg transition ${
-              activeCategory === cat
-                ? "bg-yellow-500 text-black font-semibold"
-                : "bg-white/10 text-white hover:bg-white/20"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+        {/* Category Selector */}
+        <div className="mb-10 flex flex-wrap justify-center gap-3">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`rounded-lg px-4 py-2 transition ${
+                activeCategory === cat
+                  ? "bg-yellow-500 font-semibold text-black"
+                  : "bg-white/10 text-white hover:bg-white/20"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
-      {/* Rules */}
-      {loading ? (
-        <p className="text-white/60 text-center">
-          Loading rules...
-        </p>
-      ) : (
-        <RulesTimeline rules={rules} />
-      )}
+        {/* Rules */}
+        {loading ? (
+          <p className="text-center text-white/60">Loading rules...</p>
+        ) : (
+          <RulesTimeline rules={rules} />
+        )}
+      </div>
     </div>
-  </div>
-);
-
+  );
 }
