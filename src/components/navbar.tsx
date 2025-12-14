@@ -1,9 +1,9 @@
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { FaGithub, FaDiscord } from "react-icons/fa";
+import { FaInstagram, FaDiscord } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useWindowScroll } from "react-use";
-import { LINKS, NAV_ITEMS } from "@/constants";
+import {  NAV_ITEMS,LINKS } from "@/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 
@@ -111,15 +111,15 @@ export const Navbar = () => {
                   ))}
               </button>
 
-              {/* <a
+              <a
                 href={LINKS.sourceCode}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="transition hover:opacity-75"
                 title="Source Code"
               >
-                <FaGithub className="size-5 text-white" />
-              </a> */}
+                <FaInstagram className="size-5 text-white" />
+              </a>
             </div>
           </div>
         </nav>

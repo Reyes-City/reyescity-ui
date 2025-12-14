@@ -10,7 +10,7 @@ export const NAV_ITEMS = [
 ] as const;
 
 export const LINKS = {
-  sourceCode: "https://github.com/sanidhyy/game-website",
+  sourceCode: "https://www.instagram.com/reyescityrp/",
 } as const;
 
 export const SOCIAL_LINKS = [
