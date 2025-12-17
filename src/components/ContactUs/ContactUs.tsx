@@ -1,5 +1,6 @@
-import { LINKS } from "@/constants";
+
 import { motion } from "framer-motion";
+import { JSX } from "react";
 import {
   FaDiscord,
   FaInstagram,
