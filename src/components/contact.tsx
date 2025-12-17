@@ -38,21 +38,22 @@ export const Contact = () => {
           />
 
           <ImageClipBox
-            src="/img/swordman.webp"
+            src="https://cdn.discordapp.com/attachments/1387534624888066159/1450799228099104810/image.png?ex=6943d992&is=69428812&hm=7a21501280c587cf685732a11095d072d93258efddfc3830bd2009fd1ba4ef5e&"
             alt="Swordman"
             clipClass="sword-man-clip-path md:scale-125"
           />
         </div>
 
         <div className="flex flex-col items-center text-center">
-          <p className="font-general text-[10px] uppercase">Join Zentry</p>
+          <p className="font-general text-[10px] uppercase">JOIN OUR OFFICIAL STREAMER PROGRAM</p>
 
           <p className="special-font mt-10 w-full font-zentry text-5xl leading-[0.9] md:text-[6rem]">
-            Let&apos;s b<b>u</b>ild the
-            <br /> new era of <br /> g<b>a</b>ming t<b>o</b>gether
-          </p>
+  Let&apos;s <b>c</b>reate the
+  <br /> next era of <br /> st<b>r</b>eaming <br/>t<b>o</b>gether
+</p>
 
-          <Button containerClass="mt-10 cursor-pointer">Contact Us</Button>
+
+          <Button containerClass="mt-10 cursor-pointer">Join Now</Button>
         </div>
       </div>
     </section>

@@ -1,11 +1,12 @@
-import { About } from "@/components/about";
+// import { About } from "@/components/about";
 import { Contact } from "@/components/contact";
-import { Features } from "@/components/features";
+// import { Features } from "@/components/features";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
-import { Story } from "@/components/story";
+// import { Story } from "@/components/story";
 import PremiumPlans from "./PremiumPlans/PremiumPlans";
+import AboutUs from "@/components/about/AboutUs";
 
 
 export const Home = () => {
@@ -15,11 +16,12 @@ export const Home = () => {
 
       <main>
         <Hero />
-        <About />
+        {/* <About /> */}
+         <AboutUs page="home" />
        <PremiumPlans color="black" />
 
-        <Features />
-        <Story />
+        {/* <Features /> */}
+        {/* <Story /> */}
         <Contact />
       </main>
 
