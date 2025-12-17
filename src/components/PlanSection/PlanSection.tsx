@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import PlanCard from "../PlanCard/PlanCard";
 import { PremiumGroup } from "../../constants/types";
 import "./PlanSection.css";
-import { AnimatedTitle } from "../animated-title";
 
 const PlanSection: React.FC<{ group: PremiumGroup, color: string }> = ({ group, color }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
