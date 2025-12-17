@@ -12,6 +12,8 @@ import AdminLayout from "@/layouts/AdminLayout";
 import RulesPage from "@/pages/rules/Rules";
 import Premium from "./pages/PremiumPlans/Premium";
 import { AboutUsPage } from "./pages/AboutUsPage";
+import { ContactUsPage } from "./pages/ContactUsPage";
+
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/rules" element={<RulesPage />} />
       <Route path="/about-us" element={<AboutUsPage/>} />
+ <Route path="/contact" element={<ContactUsPage/>} />
+
         <Route path="/admin/login" element={<AdminLogin />} />
 
         {/* ADMIN ROUTES (WITH LAYOUT) */}
