@@ -1,17 +1,15 @@
-
 import "./PlanCard.css";
 
 const PlanCard = ({ plan }: any) => {
   return (
     <div className="card-wrapper">
 
-      {/* BADGES OUTSIDE */}
       {plan.mostPopular && <div className="badge popular">Most Popular</div>}
       {plan.exclusive && <div className="badge exclusive">Exclusive</div>}
 
       <div className="card">
 
-        {/* FRONT SIDE */}
+        {/* FRONT */}
         <div className="front">
           <div className="green-orb"></div>
           <div className="orbit"></div>
@@ -26,17 +24,18 @@ const PlanCard = ({ plan }: any) => {
             {plan.shortDescription === "NA" ? "NA" : plan.shortDescription}
           </div>
 
-          <p className="note">Renewal: ₹{plan.renuvalamount || "Not Available"}</p>
+          <p className="note">
+            Renewal: ₹{plan.renuvalamount || "Not Available"}
+          </p>
         </div>
 
-        {/* BACK SIDE */}
+        {/* BACK */}
         <div className="back">
           <h2>{plan.premiumTitle}</h2>
           <p>{plan.description}</p>
         </div>
 
       </div>
-
     </div>
   );
 };

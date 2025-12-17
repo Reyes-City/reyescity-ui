@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import PlanCard from "../PlanCard/PlanCard";
 import { PremiumGroup } from "../../constants/types";
 import "./PlanSection.css";
@@ -7,7 +7,6 @@ const PlanSection: React.FC<{ group: PremiumGroup }> = ({ group }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showArrows, setShowArrows] = useState(false);
 
-  // Detect overflow
   const checkOverflow = () => {
     const el = scrollRef.current;
     if (!el) return;
@@ -16,33 +15,35 @@ const PlanSection: React.FC<{ group: PremiumGroup }> = ({ group }) => {
 
   useEffect(() => {
     checkOverflow();
-    const resizeObserver = new ResizeObserver(checkOverflow);
-    if (scrollRef.current) resizeObserver.observe(scrollRef.current);
-    return () => resizeObserver.disconnect();
+    const observer = new ResizeObserver(checkOverflow);
+    if (scrollRef.current) observer.observe(scrollRef.current);
+    return () => observer.disconnect();
   }, [group]);
 
-  const scrollLeft = () => {
-    scrollRef.current?.scrollBy({ left: -400, behavior: "smooth" });
-  };
-
-  const scrollRight = () => {
-    scrollRef.current?.scrollBy({ left: 400, behavior: "smooth" });
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollBy({
+      left: dir === "left" ? -el.clientWidth * 0.85 : el.clientWidth * 0.85,
+      behavior: "smooth",
+    });
   };
 
   return (
     <div className="plan-section">
 
       <div className="section-header">
-        
-        <h4 className="bento-title special-fonts">{group.premiumTitle}</h4>
-        <span className="scroll-hint">Scroll →</span>
+        <h4 className="bento-title">{group.premiumTitle}</h4>
       </div>
 
-      {/* Show arrows only when needed */}
       {showArrows && (
         <>
-          <button className="arrow-btn left" onClick={scrollLeft}>←</button>
-          <button className="arrow-btn right" onClick={scrollRight}>→</button>
+          <button className="arrow-btn left" onClick={() => scroll("left")}>
+            ‹
+          </button>
+          <button className="arrow-btn right" onClick={() => scroll("right")}>
+            ›
+          </button>
         </>
       )}
 
