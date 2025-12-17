@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import PlanCard from "../PlanCard/PlanCard";
 import { PremiumGroup } from "../../constants/types";
 import "./PlanSection.css";
+import { AnimatedTitle } from "../animated-title";
 
-const PlanSection: React.FC<{ group: PremiumGroup }> = ({ group }) => {
+const PlanSection: React.FC<{ group: PremiumGroup, color: string }> = ({ group, color }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showArrows, setShowArrows] = useState(false);
 
@@ -28,12 +29,16 @@ const PlanSection: React.FC<{ group: PremiumGroup }> = ({ group }) => {
       behavior: "smooth",
     });
   };
+  const titleClass =
+    color === "black"
+      ? "!text-black text-center"
+      : "!text-white text-center";
 
   return (
     <div className="plan-section">
 
       <div className="section-header">
-        <h4 className="bento-title">{group.premiumTitle}</h4>
+        <h4 className={`bento-title ${titleClass}`}><b>{group.premiumTitle}</b></h4>
       </div>
 
       {showArrows && (

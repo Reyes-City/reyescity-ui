@@ -25,7 +25,7 @@ const PremiumPlans = ({ color = "white" }: PremiumPlansProps) => {
       <AnimatedTitle containerClass={titleClass}>Premium Plans ✦</AnimatedTitle>
 
       {groups.map((group, index) => (
-        <PlanSection key={index} group={group} />
+        <PlanSection key={index} group={group} color={color}/>
       ))}
     </div>
   );
