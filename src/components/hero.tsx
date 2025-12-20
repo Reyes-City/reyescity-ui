@@ -109,7 +109,7 @@ export const Hero = () => {
               onClick={handleMiniVideoClick}
               className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
             >
-              <video
+              {/* <video
                 ref={nextVideoRef}
                 src={getVideoSrc(upcomingVideoIndex)}
                 loop
@@ -117,7 +117,7 @@ export const Hero = () => {
                 id="current-video"
                 className="size-64 origin-center scale-150 object-cover object-center"
                 onLoadedData={handleVideoLoad}
-              />
+              /> */}
             </div>
           </div>
 

@@ -18,24 +18,24 @@ export const Contact = () => {
       <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
         <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
           <ImageClipBox
-            src="/img/contact-1.webp"
+            src="https://cdn.discordapp.com/attachments/1387534624888066159/1450845378852426000/ABS2GSkFfX2-CMC-gUdEaAC-PIdjNYhzOYCq1XrQ3ocZKFE3wYEZzdqltZxCM63Ikzz0PLlcy1DQdEoGIevrUlJcJin54yxof7UvIRc5CyHHO7995n7QouTH8eyughbzDTX7cxd-LxUGWU8hFYv7bH1DECiu0dqJXvSId0U-rvWqkdeE65Ees1024-rj.png?ex=6947504d&is=6945fecd&hm=9b127fea0fd4f4c955360df27bdaf681c60d9f890560316ff92eed2c20103dd9&"
             alt="Contact bg 1"
             clipClass="contact-clip-path-1"
           />
 
-          <ImageClipBox
-            src="/img/contact-2.webp"
+          {/* <ImageClipBox
+            src="https://cdn.discordapp.com/attachments/1387534624888066159/1450845378852426000/ABS2GSkFfX2-CMC-gUdEaAC-PIdjNYhzOYCq1XrQ3ocZKFE3wYEZzdqltZxCM63Ikzz0PLlcy1DQdEoGIevrUlJcJin54yxof7UvIRc5CyHHO7995n7QouTH8eyughbzDTX7cxd-LxUGWU8hFYv7bH1DECiu0dqJXvSId0U-rvWqkdeE65Ees1024-rj.png?ex=6947504d&is=6945fecd&hm=9b127fea0fd4f4c955360df27bdaf681c60d9f890560316ff92eed2c20103dd9&"
             alt="Contact bg 2"
             clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
-          />
+          /> */}
         </div>
 
         <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-10 lg:top-20 lg:w-80">
-          <ImageClipBox
+          {/* <ImageClipBox
             src="/img/swordman-partial.webp"
             alt="Swordman partial"
             clipClass="absolute md:scale-125"
-          />
+          /> */}
 
           <ImageClipBox
             src="https://cdn.discordapp.com/attachments/1387534624888066159/1450799228099104810/image.png?ex=6943d992&is=69428812&hm=7a21501280c587cf685732a11095d072d93258efddfc3830bd2009fd1ba4ef5e&"
