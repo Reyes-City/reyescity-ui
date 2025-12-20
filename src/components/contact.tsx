@@ -18,41 +18,53 @@ export const Contact = () => {
       <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
         <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
           <ImageClipBox
-            src="/img/contact-1.webp"
+            src="https://cdn.discordapp.com/attachments/1387534624888066159/1451840259800432730/image.png?ex=6947a31b&is=6946519b&hm=58923fc31c41bfa77727e290bde360b18ac8c6f8ae339b707d75dbf3a3e096f8&"
             alt="Contact bg 1"
-            clipClass="contact-clip-path-1"
+            clipClass="contact-clip-path-1 md:scale-125"
           />
 
-          <ImageClipBox
-            src="/img/contact-2.webp"
+          {/* <ImageClipBox
+            src="https://cdn.discordapp.com/attachments/1387534624888066159/1451818796322127924/Gemini_Generated_Image_tcmgcjtcmgcjtcmg.png?ex=69478f1e&is=69463d9e&hm=61ab89d44fa227a30821b7241b804a6bf53c8d4c7ee7232059513624acd5423d&"
             alt="Contact bg 2"
             clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
-          />
+          /> */}
         </div>
 
         <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-10 lg:top-20 lg:w-80">
-          <ImageClipBox
+          {/* <ImageClipBox
             src="/img/swordman-partial.webp"
             alt="Swordman partial"
             clipClass="absolute md:scale-125"
-          />
+          /> */}
 
           <ImageClipBox
-            src="/img/swordman.webp"
+            src="https://cdn.discordapp.com/attachments/1387534624888066159/1450799228099104810/image.png?ex=6943d992&is=69428812&hm=7a21501280c587cf685732a11095d072d93258efddfc3830bd2009fd1ba4ef5e&"
             alt="Swordman"
             clipClass="sword-man-clip-path md:scale-125"
           />
         </div>
 
         <div className="flex flex-col items-center text-center">
-          <p className="font-general text-[10px] uppercase">Join Zentry</p>
-
-          <p className="special-font mt-10 w-full font-zentry text-5xl leading-[0.9] md:text-[6rem]">
-            Let&apos;s b<b>u</b>ild the
-            <br /> new era of <br /> g<b>a</b>ming t<b>o</b>gether
+          <p className="font-general text-[10px] uppercase">
+            JOIN OUR OFFICIAL STREAMER PROGRAM
           </p>
 
-          <Button containerClass="mt-10 cursor-pointer">Contact Us</Button>
+          <p className="special-font mt-10 w-full font-zentry text-5xl leading-[0.9] md:text-[6rem]">
+            Let&apos;s <b>c</b>reate the
+            <br /> next era of <br /> st<b>r</b>eaming <br />t<b>o</b>gether
+          </p>
+
+          <Button
+            containerClass="mt-10 cursor-pointer"
+            onClick={() =>
+              window.open(
+                "https://docs.google.com/forms/d/e/1FAIpQLSdOv4UAfBzibLKpzCFDYxbido3apHzLW0_4wayqMgA2x0186w/viewform",
+                "_blank"
+              )
+            }
+          >
+            Join Now
+          </Button>
         </div>
       </div>
     </section>

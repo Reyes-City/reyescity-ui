@@ -64,7 +64,7 @@ export const Navbar = () => {
             </a>
 
             {/* 🔥 Updated: Join Now navigates to /admin */}
-            <Link to="/admin">
+            <Link to="https://discord.gg/2ZsBGcYCgd">
               <Button
                 id="product-button"
                 rightIcon={FaDiscord}
@@ -79,7 +79,7 @@ export const Navbar = () => {
             <div className="hidden md:block">
               {NAV_ITEMS.map(({ label, href }) => (
                 <Link key={href} to={href} className="nav-hover-btn">
-                  {label}
+                 <b> {label}</b>
                 </Link>
               ))}
             </div>

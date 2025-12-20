@@ -1,7 +1,19 @@
-import {LoginComponent} from "@/components/LoginComponent";
+import { LoginComponent } from "@/components/LoginComponent";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AdminLogin = () => {
+  const navigate = useNavigate();
+
+  // 🔐 If already logged in, go to dashboard
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      navigate("/admin/dashboard", { replace: true });
+    }
+  }, [navigate]);
+
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center bg-[#05010a] overflow-hidden">
 
@@ -29,9 +41,8 @@ export const AdminLogin = () => {
         ))}
       </div>
 
-      {/* Show login component */}
+      {/* Login Card */}
       <LoginComponent />
     </div>
   );
 };
-

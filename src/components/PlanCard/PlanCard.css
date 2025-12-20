@@ -1,217 +1,138 @@
 .card-wrapper {
-    position: relative;
-    perspective: 1600px;
-    width: 330px;
-    height: 500px;
+  position: relative;
+  perspective: 2000px;
+  width: 100%;
+  max-width: 340px;
+  height: 500px;
+  flex-shrink: 0;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .card-wrapper {
+    height: 460px;
+  }
 }
 
 /* BADGES */
 .badge {
-    position: absolute;
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    z-index: 50;
-    color: #000;
+  position: absolute;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  z-index: 50;
+  color: #000;
 }
+
 .popular { background: #00ff99; top: -12px; left: 10px; }
 .exclusive { background: #ffdf5d; top: -12px; right: 10px; }
 
-/* CARD */
+/* 🎴 CARD — VERY SLOW FLIP */
 .card {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.9s cubic-bezier(0.22,1,0.36,1);
-    position: relative;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+
+  /* ⬇️ SLOWER THAN BEFORE */
+  transition: transform 2.4s cubic-bezier(0.12, 0.95, 0.25, 1);
 }
 
 .card-wrapper:hover .card {
-    transform: rotateY(180deg) scale(1.04);
+  transform: rotateY(180deg) scale(1.01);
 }
 
 /* SIDES */
-.front, .back {
-    position: absolute;
-    inset: 0;
-    padding: 28px;
-    border-radius: 22px;
-    backface-visibility: hidden;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.07);
-    box-shadow: 0 0 25px rgba(0,255,120,0.15);
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  padding: 28px;
+  border-radius: 22px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 /* FRONT */
 .front {
-    background: rgba(10,10,10,0.92) !important;
-    z-index: 3;
-}
-
-/* ENSURE TEXT IS ALWAYS ABOVE ORB */
-.front * {
-    position: relative;
-    z-index: 5;
+  background: rgba(10,10,10,0.96);
 }
 
 /* BACK */
 .back {
-    background: rgba(15,15,15,0.97);
-    transform: rotateY(180deg);
-    padding: 40px;
-    border: 1px solid rgba(0,255,150,0.35);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.back h2 {
-    opacity: 0;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.back p {
-    opacity: 0;
-    font-size: 1rem;
-    white-space: pre-line;
-    line-height: 1.6rem;
-}
-
-/* BACK ANIMATIONS */
-.card-wrapper:hover .back h2 {
-    animation: fadeSlideDown 0.6s ease forwards, glowPulse 2s infinite alternate;
-}
-
-.card-wrapper:hover .back p {
-    animation: fadeSlideUp 0.8s ease forwards;
-}
-
-@keyframes fadeSlideDown {
-    0% { opacity: 0; transform: translateY(-18px) scale(0.95); }
-    100% { opacity: 1; transform: translateY(0px) scale(1); }
-}
-
-@keyframes fadeSlideUp {
-    0% { opacity: 0; transform: translateY(18px); }
-    100% { opacity: 1; transform: translateY(0px); }
-}
-
-@keyframes glowPulse {
-    0% { text-shadow: 0 0 8px #00ff99; }
-    100% { text-shadow: 0 0 18px #00ffaa; }
-}
-
-/* ORB & ORBIT — ALWAYS BEHIND TEXT */
-.green-orb,
-.orbit {
-    z-index: 1 !important;
+  background: rgba(15,15,15,0.98);
+  transform: rotateY(180deg);
+  padding: 40px;
+  border: 1px solid rgba(255,215,0,0.45);
 }
 
 /* ORB */
 .green-orb {
-    width: 90px;
-    height: 90px;
-    background: radial-gradient(circle, #8aff9c, #00ff66, #008f3d);
-    border-radius: 50%;
-    position: absolute;
-    top: 18px;
-    right: 10px;
-    box-shadow: 0 0 40px #00ff7f;
-    animation: float 3s infinite ease-in-out alternate;
-    opacity: 0.75; /* reduced slightly for readability */
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, #b8ffce, #00ff7f, #007a3d);
+  border-radius: 50%;
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  box-shadow: 0 0 45px rgba(0,255,127,0.5);
+  animation: float 5s ease-in-out infinite alternate;
+  opacity: 0.65;
 }
 
 .orbit {
-    position: absolute;
-    width: 150px;
-    height: 70px;
-    border: 2px solid rgba(0,255,150,0.5);
-    border-radius: 50%;
-    top: 50px;
-    right: -15px;
-    transform: rotate(-25deg);
-    opacity: 0.4;
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  border: 2px solid rgba(0,255,150,0.4);
+  border-radius: 50%;
+  top: 50px;
+  right: -15px;
+  transform: rotate(-25deg);
+  opacity: 0.35;
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-10px); }
+  from { transform: translateY(0); }
+  to { transform: translateY(-14px); }
 }
 
-/* FRONT CONTENT */
+/* TEXT */
 .plan-label {
-    background: #00ff99;
-    color: #000;
-    padding: 7px 16px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 1rem;
-    display: inline-block;
-    margin-top: 40px;
+  background: #00ff99;
+  color: #000;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  margin-top: 40px;
 }
 
 .price-box {
-    background: #fff;
-    color: #000;
-    padding: 10px 18px;
-    border-radius: 10px;
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-top: 12px;
+  background: #fff;
+  color: #000;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  margin-top: 12px;
 }
 
 .short-desc {
-    margin-top: 30px;
-    background: rgba(255,255,255,0.12);
-    padding: 20px;
-    border-radius: 15px;
-    min-height: 90px;
-    max-height: 90px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-
-.short-desc.na {
-    justify-content: center;
-    font-style: italic;
-    opacity: 0.85;
+  margin-top: 30px;
+  background: rgba(255,255,255,0.12);
+  padding: 20px;
+  border-radius: 15px;
+  min-height: 90px;
 }
 
 .note {
-    opacity: 0.75;
-    margin-top: 18px;
-    font-size: 0.85rem;
+  opacity: 0.75;
+  margin-top: 18px;
+  font-size: 0.85rem;
 }
 
-
-/* MAKE ALL TEXT PURE WHITE & READABLE */
 .front,
-.front * {
-    color: #ffffff !important;
-    opacity: 1 !important;
-    text-shadow: 0 0 6px rgba(0,0,0,0.6);
-}
-
-/* BACK SIDE TEXT ALSO PURE WHITE */
-.back,
-.back * {
-    color: #ffffff !important;
-    opacity: 1 !important;
-    text-shadow: 0 0 6px rgba(0,0,0,0.7);
-}
-
-/* PRICE BOX TEXT SHOULD BE BLACK (KEEP ORIGINAL DESIGN) */
-.price-box {
-    color: #000 !important;
-    text-shadow: none !important;
-}
-
-/* PLAN LABEL TEXT SHOULD BE BLACK (KEEP ORIGINAL DESIGN) */
-.plan-label {
-    color: #000 !important;
-    text-shadow: none !important;
+.back {
+  color: #ffffff;
 }
