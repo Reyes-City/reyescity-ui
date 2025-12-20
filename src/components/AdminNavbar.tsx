@@ -1,16 +1,31 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoChevronDown } from "react-icons/io5";
 import { FaUserShield, FaBell } from "react-icons/fa";
 
 export const AdminNavbar = () => {
   const navRef = useRef<HTMLElement | null>(null);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const toggleMenu = (key: string) =>
     setOpenMenu((prev) => (prev === key ? null : key));
   const closeMenu = () => setOpenMenu(null);
+
+  /* 🔐 LOGOUT FUNCTION */
+  const handleLogout = () => {
+    console.log("🚪 Logging out");
+
+    // Clear tokens
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+
+    closeMenu();
+
+    // Redirect to login
+    navigate("/admin/login", { replace: true });
+  };
 
   /* Dropdown animation */
   useEffect(() => {
@@ -42,16 +57,13 @@ export const AdminNavbar = () => {
         {/* LOGO */}
         <div className="flex items-center gap-3">
           <img src="/img/logo_reyes_city.png" className="w-10" />
-          <span className="font-semibold tracking-wide">
-            Admin Panel
-          </span>
+          <span className="font-semibold tracking-wide">Admin Panel</span>
         </div>
 
         {/* MAIN NAV */}
         <div className="flex items-center gap-10 text-sm font-medium">
           <Menu label="Dashboard" />
 
-          {/* CREATE */}
           <Menu
             label="Create"
             open={openMenu === "create"}
@@ -64,7 +76,6 @@ export const AdminNavbar = () => {
             <NavItem to="/admin/forms/custom" onClick={closeMenu}>📝 Create Form</NavItem>
           </Menu>
 
-          {/* MANAGE */}
           <Menu
             label="Manage"
             open={openMenu === "manage"}
@@ -77,7 +88,6 @@ export const AdminNavbar = () => {
             <NavItem to="/admin/tools/punishments" onClick={closeMenu}>🚫 Punishments</NavItem>
           </Menu>
 
-          {/* CONTENT */}
           <Menu
             label="Content"
             open={openMenu === "content"}
@@ -91,7 +101,6 @@ export const AdminNavbar = () => {
             </NavItem>
           </Menu>
 
-          {/* COMMUNITY */}
           <Menu
             label="Community"
             open={openMenu === "community"}
@@ -105,7 +114,6 @@ export const AdminNavbar = () => {
             </NavItem>
           </Menu>
 
-          {/* SYSTEM */}
           <Menu
             label="System"
             open={openMenu === "system"}
@@ -142,9 +150,18 @@ export const AdminNavbar = () => {
 
             <div className="my-1 h-px bg-yellow-600/20" />
 
-            <NavItem to="/logout" danger onClick={closeMenu}>
+            {/* 🔥 REAL LOGOUT */}
+            <button
+              onClick={handleLogout}
+              className="
+                block w-full text-left
+                px-4 py-2.5 text-sm
+                text-red-400 hover:bg-red-500/10
+                transition
+              "
+            >
               Logout
-            </NavItem>
+            </button>
           </Menu>
         </div>
       </nav>
@@ -173,12 +190,9 @@ const Menu = ({ label, icon, open, onClick, children, align }: any) => (
           menu-${label?.toLowerCase()}
           absolute
           ${align === "right" ? "right-0" : "left-0"}
-          mt-3
-          min-w-[200px]
-          rounded-xl
-          bg-black
-          border
-          border-yellow-600/40
+          mt-3 min-w-[200px]
+          rounded-xl bg-black
+          border border-yellow-600/40
           shadow-[0_10px_30px_rgba(0,0,0,0.8)]
           overflow-hidden
         `}
@@ -194,11 +208,7 @@ const NavItem = ({ to, children, danger, onClick }: any) => (
     to={to}
     onClick={onClick}
     className={`
-      block
-      px-4
-      py-2.5
-      text-sm
-      transition
+      block px-4 py-2.5 text-sm transition
       ${
         danger
           ? "text-red-400 hover:bg-red-500/10"

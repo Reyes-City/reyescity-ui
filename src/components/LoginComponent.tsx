@@ -1,12 +1,22 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const LoginComponent = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+   const API_BASE_URL =  import.meta.env.VITE_BASE_URL;
+  // 🔐 If session already exists → go to dashboard
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      navigate("/admin/dashboard", { replace: true });
+    }
+  }, [navigate]);
 
   const loginWithDiscord = () => {
     setLoading(true);
-    window.location.href = "http://localhost:5000/api/auth/discord";
+     window.location.href = `${API_BASE_URL}/auth/discord`;
   };
 
   return (
@@ -36,15 +46,14 @@ export const LoginComponent = () => {
         ))}
       </div>
 
-      {/* CARD CONTAINER */}
+      {/* CARD */}
       <motion.div
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
         className="z-[2] flex w-full max-w-5xl rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(255,215,0,0.4)] bg-[#0a0a0a] border border-yellow-700/40"
       >
-
-        {/* LEFT SIDE IMAGE */}
+        {/* LEFT IMAGE */}
         <div className="hidden md:block w-1/2 relative">
           <img
             src="/img/logo_reyes_city.png"
@@ -54,7 +63,7 @@ export const LoginComponent = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT */}
         <div className="w-full md:w-1/2 px-10 py-12 bg-[#0d0d0d] flex flex-col justify-center">
           <h1 className="text-white text-3xl font-bold mb-1 tracking-widest">
             STAFF LOGIN
@@ -63,7 +72,6 @@ export const LoginComponent = () => {
             DISCORD AUTH REQUIRED
           </p>
 
-          {/* DISCORD LOGIN BUTTON */}
           <motion.button
             whileHover={{
               scale: 1.05,
@@ -83,7 +91,6 @@ export const LoginComponent = () => {
             {loading ? "CONNECTING TO DISCORD..." : "LOGIN WITH DISCORD"}
           </motion.button>
 
-          {/* INFO */}
           <p className="text-xs text-yellow-400/60 mt-6 text-center">
             Only authorized Discord staff can access admin panel
           </p>
