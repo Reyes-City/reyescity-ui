@@ -155,8 +155,8 @@
 
 //             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
 //               Welcome to the Next-Gen City <br />
-//                Activate the Future of Play & Economy 
-             
+//                Activate the Future of Play & Economy
+
 //             </p>
 
 //             <Button
@@ -177,12 +177,10 @@
 //   );
 // };
 
-
-
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 
 import { Button } from "./button";
