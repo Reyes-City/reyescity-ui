@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import UsersTable from "@/components/users/UsersTable";
 import { getUsers, deleteUser } from "../../services/users.api";
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function ManageUsersPage() {
   const [users, setUsers] = useState<any[]>([]);
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 
   const loadUsers = async () => {
     const data = await getUsers();
@@ -39,7 +39,9 @@ export default function ManageUsersPage() {
 
       {/* TABLE */}
       <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-xl">
-        <UsersTable data={users} onDelete={handleDelete} />
+        <UsersTable data={users} onDelete={handleDelete} onEdit={function (_user: any): void {
+                  throw new Error("Function not implemented.");
+              } } />
       </div>
     </div>
   );

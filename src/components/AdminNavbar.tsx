@@ -51,7 +51,7 @@ export const AdminNavbar = () => {
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 z-50 w-full bg-black/90 backdrop-blur border-b border-yellow-600/40"
+      className="fixed left-0 top-0 z-50 w-full border-b border-yellow-600/40 bg-black/90 backdrop-blur"
     >
       <nav className="flex items-center justify-between px-8 py-4 text-yellow-400">
         {/* LOGO */}
@@ -62,18 +62,33 @@ export const AdminNavbar = () => {
 
         {/* MAIN NAV */}
         <div className="flex items-center gap-10 text-sm font-medium">
-          <Menu label="Dashboard" />
+          <Link
+            to="/admin/dashboard"
+            className="text-yellow-400 transition hover:text-yellow-300"
+          >
+            Dashboard
+          </Link>
 
           <Menu
             label="Create"
             open={openMenu === "create"}
             onClick={() => toggleMenu("create")}
           >
-            <NavItem to="/admin/staff/add" onClick={closeMenu}>👤 Add Staff</NavItem>
-            <NavItem to="/admin/rules/create" onClick={closeMenu}>📕 Create Rule</NavItem>
-            <NavItem to="/admin/premium/create" onClick={closeMenu}>💎 Create Plan</NavItem>
-            <NavItem to="/admin/announcements/create" onClick={closeMenu}>📢 Create Announcement</NavItem>
-            <NavItem to="/admin/forms/custom" onClick={closeMenu}>📝 Create Form</NavItem>
+            <NavItem to="/admin/staff/add" onClick={closeMenu}>
+              👤 Add Staff
+            </NavItem>
+            <NavItem to="/admin/rules/create" onClick={closeMenu}>
+              📕 Create Rule
+            </NavItem>
+            <NavItem to="/admin/premium/create" onClick={closeMenu}>
+              💎 Create Plan
+            </NavItem>
+            <NavItem to="/admin/announcements/create" onClick={closeMenu}>
+              📢 Create Announcement
+            </NavItem>
+            <NavItem to="/admin/forms/custom" onClick={closeMenu}>
+              📝 Create Form
+            </NavItem>
           </Menu>
 
           <Menu
@@ -81,11 +96,21 @@ export const AdminNavbar = () => {
             open={openMenu === "manage"}
             onClick={() => toggleMenu("manage")}
           >
-            <NavItem to="/admin/staff" onClick={closeMenu}>👥 Manage Staff</NavItem>
-            <NavItem to="/admin/rules/manage" onClick={closeMenu}>📋 Manage Rules</NavItem>
-            <NavItem to="/admin/premium/manage" onClick={closeMenu}>💰 Manage Plans</NavItem>
-            <NavItem to="/admin/tools/reports" onClick={closeMenu}>📝 Player Reports</NavItem>
-            <NavItem to="/admin/tools/punishments" onClick={closeMenu}>🚫 Punishments</NavItem>
+            <NavItem to="/admin/staff" onClick={closeMenu}>
+              👥 Manage Staff
+            </NavItem>
+            <NavItem to="/admin/rules/manage" onClick={closeMenu}>
+              📋 Manage Rules
+            </NavItem>
+            <NavItem to="/admin/premium/manage" onClick={closeMenu}>
+              💰 Manage Plans
+            </NavItem>
+            <NavItem to="/admin/tools/reports" onClick={closeMenu}>
+              📝 Player Reports
+            </NavItem>
+            <NavItem to="/admin/tools/punishments" onClick={closeMenu}>
+              🚫 Punishments
+            </NavItem>
           </Menu>
 
           <Menu
@@ -153,12 +178,7 @@ export const AdminNavbar = () => {
             {/* 🔥 REAL LOGOUT */}
             <button
               onClick={handleLogout}
-              className="
-                block w-full text-left
-                px-4 py-2.5 text-sm
-                text-red-400 hover:bg-red-500/10
-                transition
-              "
+              className="block w-full px-4 py-2.5 text-left text-sm text-red-400 transition hover:bg-red-500/10"
             >
               Logout
             </button>
@@ -175,7 +195,7 @@ const Menu = ({ label, icon, open, onClick, children, align }: any) => (
   <div className="relative">
     <button
       onClick={onClick}
-      className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 transition"
+      className="flex items-center gap-2 text-yellow-400 transition hover:text-yellow-300"
     >
       {icon}
       {label}
@@ -186,16 +206,7 @@ const Menu = ({ label, icon, open, onClick, children, align }: any) => (
 
     {open && (
       <div
-        className={`
-          menu-${label?.toLowerCase()}
-          absolute
-          ${align === "right" ? "right-0" : "left-0"}
-          mt-3 min-w-[200px]
-          rounded-xl bg-black
-          border border-yellow-600/40
-          shadow-[0_10px_30px_rgba(0,0,0,0.8)]
-          overflow-hidden
-        `}
+        className={` menu-${label?.toLowerCase()} absolute ${align === "right" ? "right-0" : "left-0"} mt-3 min-w-[200px] overflow-hidden rounded-xl border border-yellow-600/40 bg-black shadow-[0_10px_30px_rgba(0,0,0,0.8)]`}
       >
         {children}
       </div>
@@ -207,14 +218,11 @@ const NavItem = ({ to, children, danger, onClick }: any) => (
   <Link
     to={to}
     onClick={onClick}
-    className={`
-      block px-4 py-2.5 text-sm transition
-      ${
-        danger
-          ? "text-red-400 hover:bg-red-500/10"
-          : "text-yellow-300 hover:bg-yellow-600/10"
-      }
-    `}
+    className={`block px-4 py-2.5 text-sm transition ${
+      danger
+        ? "text-red-400 hover:bg-red-500/10"
+        : "text-yellow-300 hover:bg-yellow-600/10"
+    } `}
   >
     {children}
   </Link>
