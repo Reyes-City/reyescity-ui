@@ -64,7 +64,7 @@ export const Navbar = () => {
             </a>
 
             {/* 🔥 Updated: Join Now navigates to /admin */}
-            <Link to="/admin/login">
+            <Link to="https://discord.gg/2ZsBGcYCgd">
               <Button
                 id="product-button"
                 rightIcon={FaDiscord}
