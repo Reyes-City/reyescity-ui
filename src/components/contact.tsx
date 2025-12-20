@@ -18,13 +18,13 @@ export const Contact = () => {
       <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
         <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
           <ImageClipBox
-            src="https://cdn.discordapp.com/attachments/1387534624888066159/1450845378852426000/ABS2GSkFfX2-CMC-gUdEaAC-PIdjNYhzOYCq1XrQ3ocZKFE3wYEZzdqltZxCM63Ikzz0PLlcy1DQdEoGIevrUlJcJin54yxof7UvIRc5CyHHO7995n7QouTH8eyughbzDTX7cxd-LxUGWU8hFYv7bH1DECiu0dqJXvSId0U-rvWqkdeE65Ees1024-rj.png?ex=6947504d&is=6945fecd&hm=9b127fea0fd4f4c955360df27bdaf681c60d9f890560316ff92eed2c20103dd9&"
+            src="https://cdn.discordapp.com/attachments/1387534624888066159/1451818796322127924/Gemini_Generated_Image_tcmgcjtcmgcjtcmg.png?ex=69478f1e&is=69463d9e&hm=61ab89d44fa227a30821b7241b804a6bf53c8d4c7ee7232059513624acd5423d&"
             alt="Contact bg 1"
-            clipClass="contact-clip-path-1"
+            clipClass="contact-clip-path-1 md:scale-125"
           />
 
           {/* <ImageClipBox
-            src="https://cdn.discordapp.com/attachments/1387534624888066159/1450845378852426000/ABS2GSkFfX2-CMC-gUdEaAC-PIdjNYhzOYCq1XrQ3ocZKFE3wYEZzdqltZxCM63Ikzz0PLlcy1DQdEoGIevrUlJcJin54yxof7UvIRc5CyHHO7995n7QouTH8eyughbzDTX7cxd-LxUGWU8hFYv7bH1DECiu0dqJXvSId0U-rvWqkdeE65Ees1024-rj.png?ex=6947504d&is=6945fecd&hm=9b127fea0fd4f4c955360df27bdaf681c60d9f890560316ff92eed2c20103dd9&"
+            src="https://cdn.discordapp.com/attachments/1387534624888066159/1451818796322127924/Gemini_Generated_Image_tcmgcjtcmgcjtcmg.png?ex=69478f1e&is=69463d9e&hm=61ab89d44fa227a30821b7241b804a6bf53c8d4c7ee7232059513624acd5423d&"
             alt="Contact bg 2"
             clipClass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
           /> */}
@@ -45,15 +45,26 @@ export const Contact = () => {
         </div>
 
         <div className="flex flex-col items-center text-center">
-          <p className="font-general text-[10px] uppercase">JOIN OUR OFFICIAL STREAMER PROGRAM</p>
+          <p className="font-general text-[10px] uppercase">
+            JOIN OUR OFFICIAL STREAMER PROGRAM
+          </p>
 
           <p className="special-font mt-10 w-full font-zentry text-5xl leading-[0.9] md:text-[6rem]">
-  Let&apos;s <b>c</b>reate the
-  <br /> next era of <br /> st<b>r</b>eaming <br/>t<b>o</b>gether
-</p>
+            Let&apos;s <b>c</b>reate the
+            <br /> next era of <br /> st<b>r</b>eaming <br />t<b>o</b>gether
+          </p>
 
-
-          <Button containerClass="mt-10 cursor-pointer">Join Now</Button>
+          <Button
+            containerClass="mt-10 cursor-pointer"
+            onClick={() =>
+              window.open(
+                "https://docs.google.com/forms/d/e/1FAIpQLSdOv4UAfBzibLKpzCFDYxbido3apHzLW0_4wayqMgA2x0186w/viewform",
+                "_blank"
+              )
+            }
+          >
+            Join Now
+          </Button>
         </div>
       </div>
     </section>
