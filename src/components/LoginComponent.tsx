@@ -1,19 +1,12 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 
 export const LoginComponent = () => {
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
-  const handleLogin = (e: FormEvent) => {
-    e.preventDefault();
+  const loginWithDiscord = () => {
     setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      navigate("/admin/dashboard");
-    }, 1500);
+    window.location.href = "http://localhost:5000/api/auth/discord";
   };
 
   return (
@@ -50,107 +43,50 @@ export const LoginComponent = () => {
         transition={{ duration: 0.9, ease: "easeOut" }}
         className="z-[2] flex w-full max-w-5xl rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(255,215,0,0.4)] bg-[#0a0a0a] border border-yellow-700/40"
       >
-        
+
         {/* LEFT SIDE IMAGE */}
         <div className="hidden md:block w-1/2 relative">
           <img
             src="/img/logo_reyes_city.png"
-            alt="Gaming"
+            alt="Reyes City"
             className="w-full h-full object-contain bg-black p-10 rounded-l-3xl"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
         </div>
 
-        {/* RIGHT SIDE FORM */}
-        <div className="w-full md:w-1/2 px-10 py-12 bg-[#0d0d0d]">
+        {/* RIGHT SIDE */}
+        <div className="w-full md:w-1/2 px-10 py-12 bg-[#0d0d0d] flex flex-col justify-center">
           <h1 className="text-white text-3xl font-bold mb-1 tracking-widest">
-            LOG IN ACCOUNT
+            STAFF LOGIN
           </h1>
-          <p className="text-yellow-400/80 text-sm mb-8">WELCOME BACK</p>
+          <p className="text-yellow-400/80 text-sm mb-10">
+            DISCORD AUTH REQUIRED
+          </p>
 
-          <form onSubmit={handleLogin} className="space-y-8">
+          {/* DISCORD LOGIN BUTTON */}
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 25px rgba(88,101,242,0.8)",
+            }}
+            whileTap={{ scale: 0.96 }}
+            disabled={loading}
+            onClick={loginWithDiscord}
+            className="
+              w-full py-4 rounded-lg
+              bg-[#5865F2] text-white font-semibold tracking-wide
+              shadow-[0_0_20px_rgba(88,101,242,0.6)]
+              transition
+              flex items-center justify-center gap-3
+            "
+          >
+            {loading ? "CONNECTING TO DISCORD..." : "LOGIN WITH DISCORD"}
+          </motion.button>
 
-            {/* EMAIL INPUT (UPDATED) */}
-            <div className="relative group">
-              <input
-                type="email"
-                placeholder="ENTER EMAIL"
-                required
-                className="
-                  w-full px-4 py-3 bg-black/40 border border-yellow-700 rounded-lg 
-                  text-white placeholder-yellow-400/60 outline-none transition duration-300
-                  focus:border-yellow-400 
-                  focus:shadow-[0_0_18px_rgba(255,215,0,0.55)]
-                  group-hover:border-yellow-500
-                "
-              />
-
-              {/* Underline shimmer */}
-              <span className="
-                absolute left-0 bottom-0 h-[2px] w-0 bg-gradient-to-r 
-                from-yellow-300 to-yellow-500 
-                group-hover:w-full transition-all duration-500
-              "></span>
-            </div>
-
-            {/* PASSWORD INPUT (UPDATED) */}
-            <div>
-              <div className="relative group">
-                <input
-                  type="password"
-                  placeholder="ENTER PASSWORD"
-                  required
-                  className="
-                    w-full px-4 py-3 bg-black/40 border border-yellow-700 rounded-lg 
-                    text-white placeholder-yellow-400/60 outline-none transition duration-300
-                    focus:border-yellow-400 
-                    focus:shadow-[0_0_18px_rgba(255,215,0,0.55)]
-                    group-hover:border-yellow-500
-                  "
-                />
-
-                {/* Underline shimmer */}
-                <span className="
-                  absolute left-0 bottom-0 h-[2px] w-0 bg-gradient-to-r 
-                  from-yellow-300 to-yellow-500 
-                  group-hover:w-full transition-all duration-500
-                "></span>
-              </div>
-
-              <p className="text-yellow-400/70 text-xs mt-1 cursor-pointer hover:text-yellow-300">
-                FORGOT PASSWORD?
-              </p>
-            </div>
-
-            {/* LOGIN BUTTON */}
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 25px rgba(255,215,0,0.7)",
-              }}
-              whileTap={{ scale: 0.96 }}
-              type="submit"
-              disabled={loading}
-              className="w-full py-3 rounded-lg bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-semibold tracking-wide shadow-[0_0_15px_rgba(255,215,0,0.4)] transition"
-            >
-              {loading ? "ACCESSING..." : "LOG IN"}
-            </motion.button>
-
-            {/* SIGN UP */}
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 20px rgba(255,215,0,0.4)",
-              }}
-              whileTap={{ scale: 0.96 }}
-              type="button"
-              className="w-full py-3 border border-yellow-600 text-yellow-400 rounded-lg 
-              font-semibold hover:bg-yellow-500 hover:text-black transition shadow-[0_0_15px_rgba(255,215,0,0.3)]"
-            >
-              SIGN UP
-            </motion.button>
-
-          </form>
+          {/* INFO */}
+          <p className="text-xs text-yellow-400/60 mt-6 text-center">
+            Only authorized Discord staff can access admin panel
+          </p>
         </div>
       </motion.div>
     </div>

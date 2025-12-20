@@ -18,7 +18,7 @@ export const Contact = () => {
       <div className="relative rounded-lg bg-black py-24 text-blue-50 sm:overflow-hidden">
         <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
           <ImageClipBox
-            src="https://cdn.discordapp.com/attachments/1387534624888066159/1451818796322127924/Gemini_Generated_Image_tcmgcjtcmgcjtcmg.png?ex=69478f1e&is=69463d9e&hm=61ab89d44fa227a30821b7241b804a6bf53c8d4c7ee7232059513624acd5423d&"
+            src="https://cdn.discordapp.com/attachments/1387534624888066159/1451840259800432730/image.png?ex=6947a31b&is=6946519b&hm=58923fc31c41bfa77727e290bde360b18ac8c6f8ae339b707d75dbf3a3e096f8&"
             alt="Contact bg 1"
             clipClass="contact-clip-path-1 md:scale-125"
           />
