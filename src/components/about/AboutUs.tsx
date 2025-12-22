@@ -23,7 +23,7 @@ export default function AboutUs({ page = "home" }: Props) {
         >
           {/* IMAGE 1 */}
           <motion.img
-            src="https://cdn.discordapp.com/attachments/1387534624888066159/1451083077144154214/b3b84a458822e848b1339978439f8995.png?ex=694784ed&is=6946336d&hm=aa320cd4f330b88c76b93bbc258451f91b4e5584c7d66172e3bd272420e9b2aa&"
+            src="/img/dog.png"
             className="relative z-10 h-40 w-40 rotate-[-6deg] rounded-2xl object-cover"
             whileHover={{
               scale: 1.08,
@@ -36,7 +36,7 @@ export default function AboutUs({ page = "home" }: Props) {
 
           {/* IMAGE 2 */}
           <motion.img
-            src="https://cdn.discordapp.com/attachments/1387534624888066159/1450849180955316316/fc5427eb807fa984e769586c55bfc154.jpg?ex=694753d8&is=69460258&hm=6ed775948f2e275c4f19002e7b5e1be77a4c84cc1e5aa10250bb655a80530392&"
+            src="/img/car.jpg"
             className="relative z-20 h-48 w-48 rotate-[4deg] rounded-2xl object-cover"
             whileHover={{
               scale: 1.1,
@@ -49,7 +49,7 @@ export default function AboutUs({ page = "home" }: Props) {
 
           {/* IMAGE 3 */}
           <motion.img
-            src="https://cdn.discordapp.com/attachments/1387534624888066159/1450845378852426000/ABS2GSkFfX2-CMC-gUdEaAC-PIdjNYhzOYCq1XrQ3ocZKFE3wYEZzdqltZxCM63Ikzz0PLlcy1DQdEoGIevrUlJcJin54yxof7UvIRc5CyHHO7995n7QouTH8eyughbzDTX7cxd-LxUGWU8hFYv7bH1DECiu0dqJXvSId0U-rvWqkdeE65Ees1024-rj.png?ex=6947504d&is=6945fecd&hm=9b127fea0fd4f4c955360df27bdaf681c60d9f890560316ff92eed2c20103dd9&"
+            src="/img/women.png"
             className="relative z-10 h-44 w-44 rotate-[-3deg] rounded-2xl object-cover"
             whileHover={{
               scale: 1.08,

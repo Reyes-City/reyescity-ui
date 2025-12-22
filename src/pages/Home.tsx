@@ -17,7 +17,7 @@ const PARTNERS = [
     description:
       "A trusted organization officially partnered with Reyes City, supporting growth, infrastructure, and community initiatives.",
     logo:
-      "https://cdn.discordapp.com/attachments/1449241530366693586/1449384138103590953/image.png?ex=694350ea&is=6941ff6a&hm=e302f9537ca9049e20871dc4f0eb5abc750fe07e4cee26dbbe25dc46c7c2b6ed&",
+      "/img/busmods.png",
   },
 ];
 export const Home = () => {
