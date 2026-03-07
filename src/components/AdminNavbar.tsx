@@ -105,8 +105,8 @@ export const AdminNavbar = () => {
             <NavItem to="/admin/premium/manage" onClick={closeMenu}>
               💰 Manage Plans
             </NavItem>
-            <NavItem to="/admin/tools/reports" onClick={closeMenu}>
-              📝 Player Reports
+            <NavItem to="/admin/duty-dashboard" onClick={closeMenu}>
+              📝 Gov Duty Reports
             </NavItem>
             <NavItem to="/admin/tools/punishments" onClick={closeMenu}>
               🚫 Punishments

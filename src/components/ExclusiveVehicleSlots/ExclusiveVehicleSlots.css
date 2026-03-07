@@ -1,0 +1,235 @@
+:root {
+  --bg: #000207;
+  --card: #131a33;
+  --rail: #2a335e;
+  --claimed: #22c55e;
+  --locked: #6b7280;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #5865f2;
+}
+
+/* ===== PAGE ===== */
+.evs-container {
+  max-width: 1100px;
+  margin: auto;
+  /* padding: 2px 6px; */
+  color: var(--text);
+  background: linear-gradient(180deg, #000000, #000000);
+  overflow-x: hidden;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 6px;
+  font-size: 22px;
+}
+
+.evs-subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+/* ===== CARD ===== */
+.evs-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 32px 24px 48px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  margin-top: 32px;
+  position: relative;
+}
+
+/* rail */
+.rail-wrap {
+  height: 6px;
+  background: var(--rail);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0 8px;
+}
+
+/* claimed rail */
+.rail-claimed {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+  border-radius: 999px;
+  animation: fillRail 1.6s ease-out forwards;
+}
+
+@keyframes fillRail {
+  to {
+    width: var(--fill);
+  }
+}
+
+/* ===== SLOTS ===== */
+.slots {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -16px;
+  padding: 0 8px;
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 28px;
+}
+
+/* tick */
+.tick {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #111827;
+  border: 2px solid var(--locked);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--locked);
+}
+
+.tick.claimed {
+  background: var(--claimed);
+  border-color: var(--claimed);
+  color: #052e16;
+}
+
+/* number */
+.slot-number {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ===== TOOLTIP (DESKTOP ONLY) ===== */
+.slot-tooltip {
+  position: absolute;
+  bottom: 160%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #18224d, #121a3a);
+  border-radius: 14px;
+  padding: 12px 14px;
+  min-width: 180px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease;
+  z-index: 10;
+}
+
+.slot:hover .slot-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-6px);
+}
+
+.slot-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 7px;
+  border-style: solid;
+  border-color: #121a3a transparent transparent transparent;
+}
+
+.tooltip-title {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.tooltip-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 6px 0;
+}
+
+.tooltip-row {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ===== APPLY BUTTON ===== */
+.apply-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.apply-btn {
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent), #7c83ff);
+  box-shadow: 0 12px 30px rgba(88, 101, 242, 0.35);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.apply-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.apply-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ===== TABLET & MOBILE ===== */
+@media (max-width: 768px) {
+  .slots {
+    overflow-x: auto;
+    gap: 28px;
+    justify-content: flex-start;
+    padding-bottom: 12px;
+  }
+
+  .slots::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .slots::-webkit-scrollbar-thumb {
+    background: #2a335e;
+    border-radius: 999px;
+  }
+
+  .slot-tooltip {
+    display: none; /* hover not usable on mobile */
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
+
+/* ===== SMALL MOBILE ===== */
+@media (max-width: 480px) {
+  .evs-card {
+    padding: 24px 16px 36px;
+  }
+
+  .apply-btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .evs-subtitle {
+    font-size: 13px;
+  }
+}

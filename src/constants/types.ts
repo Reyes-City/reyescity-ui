@@ -13,3 +13,12 @@ export interface PremiumGroup {
   premiumTitle: string;
   plans: Plan[];
 }
+export interface DutyReport {
+  discordName: string;
+  discordId: string;
+  department: string;
+  lastDutyDate: string;
+  totalHours: string;
+  peakHours: string;
+  offPeakHours: string;
+}

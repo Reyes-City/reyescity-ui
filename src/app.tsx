@@ -16,6 +16,8 @@ import { ContactUsPage } from "./pages/ContactUsPage";
 import AdminProtectedRoute from "./routes/AdminProtectedRoute";
 import CreateUser from "@/pages/Users/CreateUser";
 import ManageUsersPage from "./components/users/ManageUsersPage";
+import DiscordBoosterPlans from "./components/DiscordBoosterPlans/DiscordBoosterPlans";
+import DutyDashboard from "./pages/DutyDashboard";
 
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/contact" element={<ContactUsPage />} />
         <Route path="/premium-plans" element={<Premium />} />
+        <Route path="/DiscordBoosterPlans" element={<DiscordBoosterPlans />} />
 
         {/* PUBLIC ADMIN LOGIN */}
         <Route path="/admin/login" element={<AdminLogin />} />
@@ -46,6 +49,7 @@ function App() {
 
             <Route path="staff/add" element={<CreateUser />} />
             <Route path="staff" element={<ManageUsersPage />} />
+            <Route path="duty-dashboard" element={<DutyDashboard />} />
 
           </Route>
         </Route>

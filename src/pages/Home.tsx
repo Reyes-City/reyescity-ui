@@ -8,6 +8,7 @@ import { Navbar } from "@/components/navbar";
 import PremiumPlans from "./PremiumPlans/PremiumPlans";
 import AboutUs from "@/components/about/AboutUs";
 import Partnerships from "@/components/Partnerships/Partnerships";
+import ExclusiveVehiclePage from "./ExclusiveVehiclePage";
 
 const PARTNERS = [
   {
@@ -16,8 +17,7 @@ const PARTNERS = [
     title: "Official Partner",
     description:
       "A trusted organization officially partnered with Reyes City, supporting growth, infrastructure, and community initiatives.",
-    logo:
-      "/img/busmods.png",
+    logo: "/img/busmods.png",
   },
 ];
 export const Home = () => {
@@ -27,13 +27,14 @@ export const Home = () => {
 
       <main>
         <Hero />
-        {/* <About /> */}
-         <AboutUs page="home" />
-       <PremiumPlans color="black" />
 
+        {/* <About /> */}
+        <AboutUs page="home" />
+        <PremiumPlans color="black" />
         {/* <Features /> */}
         {/* <Story /> */}
         <Contact />
+         <ExclusiveVehiclePage />
         <Partnerships partners={PARTNERS} />
       </main>
 
