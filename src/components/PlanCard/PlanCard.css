@@ -1,0 +1,138 @@
+.card-wrapper {
+  position: relative;
+  perspective: 2000px;
+  width: 100%;
+  max-width: 340px;
+  height: 500px;
+  flex-shrink: 0;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .card-wrapper {
+    height: 460px;
+  }
+}
+
+/* BADGES */
+.badge {
+  position: absolute;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  z-index: 50;
+  color: #000;
+}
+
+.popular { background: #00ff99; top: -12px; left: 10px; }
+.exclusive { background: #ffdf5d; top: -12px; right: 10px; }
+
+/* 🎴 CARD — VERY SLOW FLIP */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+
+  /* ⬇️ SLOWER THAN BEFORE */
+  transition: transform 2.4s cubic-bezier(0.12, 0.95, 0.25, 1);
+}
+
+.card-wrapper:hover .card {
+  transform: rotateY(180deg) scale(1.01);
+}
+
+/* SIDES */
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  padding: 28px;
+  border-radius: 22px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* FRONT */
+.front {
+  background: rgba(10,10,10,0.96);
+}
+
+/* BACK */
+.back {
+  background: rgba(15,15,15,0.98);
+  transform: rotateY(180deg);
+  padding: 40px;
+  border: 1px solid rgba(255,215,0,0.45);
+}
+
+/* ORB */
+.green-orb {
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, #b8ffce, #00ff7f, #007a3d);
+  border-radius: 50%;
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  box-shadow: 0 0 45px rgba(0,255,127,0.5);
+  animation: float 5s ease-in-out infinite alternate;
+  opacity: 0.65;
+}
+
+.orbit {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  border: 2px solid rgba(0,255,150,0.4);
+  border-radius: 50%;
+  top: 50px;
+  right: -15px;
+  transform: rotate(-25deg);
+  opacity: 0.35;
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-14px); }
+}
+
+/* TEXT */
+.plan-label {
+  background: #00ff99;
+  color: #000;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  margin-top: 40px;
+}
+
+.price-box {
+  background: #fff;
+  color: #000;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.short-desc {
+  margin-top: 30px;
+  background: rgba(255,255,255,0.12);
+  padding: 20px;
+  border-radius: 15px;
+  min-height: 90px;
+}
+
+.note {
+  opacity: 0.75;
+  margin-top: 18px;
+  font-size: 0.85rem;
+}
+
+.front,
+.back {
+  color: #ffffff;
+}
